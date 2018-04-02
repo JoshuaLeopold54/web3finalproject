@@ -1,0 +1,5 @@
+TASKLIST: 
+<!-- Make this a function in javascript so that when we hit a button it will go to next picture -->
+<!-- Also make it so when upvote is hit, it will pop a new button up that will say continue to next item --> 
+<!-- If downvote button is hit, do nextItem() function -->
+<!-- getting total amount of DB items -->

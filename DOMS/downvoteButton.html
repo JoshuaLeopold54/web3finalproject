@@ -1,0 +1,56 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<!-- The name of our DOM content, so basically all I'll have to do is do <downvote-toggle></downvote-toggle> -->
+<dom-module id="downvote-button">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+		width: 300px;
+		background-color: gray;
+		display: flex;
+		justify-content: center;
+      }
+	  iron-icon {
+		fill: rgba(220, 19, 19, 1);
+		height: 50px;
+		width: 50px;
+	  }
+	  :host([pressed]) iron-icon {
+		fill: rgba(255,0,0,1);
+	  }
+	  
+    </style>
+    <!-- local DOM goes here -->
+	<paper-button on-tap="downvoteClicked"><iron-icon icon="icons:close"></iron-icon></paper-button>
+  </template>
+  <?php
+	include('DOMS/imageGenTest.php');
+  ?>
+  <script>
+	var numbersUsedSoFar = ["test"];
+	$(document).ready(function() {
+		var firstPicture = document.getElementById("picture").getElementsByClassName("style-scope image-gent")[0];
+		numbersUsedSoFar.push(firstPicture.src);
+	});
+    Polymer({
+      /* this is the element's prototype */
+	  /* has to match dom-module id! */
+      is: 'downvote-button',
+	  downvoteClicked: function(e) {
+				$("#results").load("scripts/generateTheImage.php", function() {
+					var thing = $("#results").text();
+					console.log(numbersUsedSoFar.indexOf(thing));
+					if (numbersUsedSoFar.indexOf(thing) == -1) {
+						numbersUsedSoFar.push(thing);
+						var thePicture = document.getElementById("picture").getElementsByClassName("style-scope image-gent")[0].src = thing;
+					} else if (numbersUsedSoFar.indexOf(thing)){
+						
+					}
+				});
+		}
+    });
+  </script>
+</dom-module>

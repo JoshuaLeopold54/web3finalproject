@@ -1,0 +1,19 @@
+<dom-module id="image-gen">
+    <template>
+        <img id="theimage" src="{{imgsrc}}" style="max-height: 433; max-width: 700px; min-width: 700px; min-height: 433px;"/>
+    </template>
+</dom-module>
+<script>
+    Polymer({
+        is: 'image-gen',
+
+        properties: {
+            imgsrc: {
+                type: String,
+                value: function () {
+                    return "https://images.pexels.com/photos/533591/pexels-photo-533591.jpeg";
+                }
+            }
+        }
+    });
+</script>
